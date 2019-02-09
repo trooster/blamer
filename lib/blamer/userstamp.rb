@@ -41,10 +41,10 @@ module Blamer
 
     def _create_record(*args)
       if record_userstamps
-        self[created_userstamp_column] = userstamp_object_or_default if respond_to?(created_userstamp_column)
-        self[updated_userstamp_column] = userstamp_object_or_default if respond_to?(updated_userstamp_column)
-        self[created_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(created_userstamp_name_column)
-        self[updated_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(updated_userstamp_name_column)
+        self[created_userstamp_column] = userstamp_object_or_default if respond_to?(created_userstamp_column) && self[created_userstamp_column].blank?
+        self[updated_userstamp_column] = userstamp_object_or_default if respond_to?(updated_userstamp_column) && self[updated_userstamp_column].blank?
+        self[created_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(created_userstamp_name_column) && self[created_userstamp_name_column].blank?
+        self[updated_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(updated_userstamp_name_column) && self[updated_userstamp_name_column].blank?
       end
 
       super
@@ -52,8 +52,8 @@ module Blamer
 
     def _update_record(*args)
       if record_userstamps && changed?
-        self[updated_userstamp_column] = userstamp_object_or_default if respond_to?(updated_userstamp_column)
-        self[updated_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(updated_userstamp_name_column)
+        self[updated_userstamp_column] = userstamp_object_or_default if respond_to?(updated_userstamp_column) && self[updated_userstamp_column].blank?
+        self[updated_userstamp_name_column] = userstamp_name_object_or_default if respond_to?(updated_userstamp_name_column) && self[updated_userstamp_name_column].blank?
       end
 
       super
