@@ -27,6 +27,10 @@ module Blamer
       nil
     end
 
+    def default_userstamp_name
+      nil
+    end
+
     def userstamp_object_or_default
       userstamp_object.try(:id) || default_userstamp_object.try(:id)
     end
