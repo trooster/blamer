@@ -31,6 +31,10 @@ module Blamer
       userstamp_object.try(:id) || default_userstamp_object.try(:id)
     end
 
+    def userstamp_name_object_or_default
+      userstamp_object.try(:name) || default_userstamp_name
+    end
+
     def _create_record(*args)
       if record_userstamps
         self[created_userstamp_column] = userstamp_object_or_default if respond_to?(created_userstamp_column)

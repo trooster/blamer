@@ -34,6 +34,11 @@ A default/fallback userstamp_object can be set if you never want to set the user
     def default_userstamp_object
       Person.find_by(name: 'Admin')
     end
+    
+    def default_userstamp_name
+      "system import"
+    end
+    
 
 If you don't like created_by/updated_by you can customize the column names:
 
